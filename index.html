@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>Weyss - Discord Bot</title>
+    <link rel="shortcut icon" href="https://media.discordapp.net/attachments/1117152196631482460/1135169612703604787/e8d6b1f05ebfa76dcfd111f919f85a00.png?width=468&height=468" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica;
+            /* background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background: linear-gradient(-45deg, #5f392d, #42202d, #0e2129, #142521);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite; */
+        }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+footer {
+    background-color: #272525;
+    text-align: center;
+    padding: 30px;
+    color: #ffffff;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-md-3,
+.col-md-6 {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.col-md-3 {
+    display: flex;
+    justify-content: center;
+}
+
+
+ul {
+    list-style: none;
+    padding: 3px;
+}
+
+ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+ul li a:hover {
+    background-color: #516ce4;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+
+        header {
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        nav {
+            text-align: right;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background-color: #181717;
+        }
+
+        #al {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #al:hover {
+            background-color: #4665B4;
+        }
+
+
+        #category-1 {
+            height: 150vh;
+            background-image: url("./fondvague.png");
+            /* https://media.discordapp.net/attachments/1104338386837315614/1137468424235270244/Design_sans_titre.png?width=831&height=467 */
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            padding: 10px;
+        }
+
+        #suit {
+            height: 100vh;
+            background: linear-gradient(to bottom, #4665B4, #b456a6);
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+
+        #topzone {
+            
+            height: 10vh;
+            background: #383c41;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+           
+        }
+
+        #botinfo {
+            height: 140vh;
+            background-image: url("./fondfusee.png");
+            /* https://media.discordapp.net/attachments/1104338386837315614/1137694604179816489/Design_sans_titre_1.png?width=831&height=467 */
+           background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 10px;
+            
+        }
+        
+        .main-content {
+            font-family: Verdana, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 100px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #7289DA;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #2e4dbd;
+            transform: scale(1.05);
+        }
+    
+        .logobutton {
+       width: 25px;
+       height: 19px;
+       margin-right: 10px;
+       margin-top: 5px;
+       }
+
+        * {
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: hsl(0, 0%, 100%);
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  display: grid;
+  place-content: center;
+  background-color: var(--background-color); 
+  min-height: 0vh;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2rem, 7vw, 9rem); /* Adjusted font-size range */
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.wrapper > div {
+  grid-area: 1/1/-1/-1;
+}
+
+.top {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+}
+
+.bottom {
+  clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
+  color: transparent;
+  background: -webkit-linear-gradient(177deg, rgb(37, 37, 37) 53%, var(--text-color) 65%);
+  background: linear-gradient(177deg, rgb(37, 37, 37) 53%, var(--text-color) 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  transform: translateX(-0.03em);
+}
+
+#votre {
+    color: #6882e0;
+}
+
+.encadre {
+    display: inline-block;
+    background-color: #383c41;
+    padding: 10px;
+    border-radius: 3px;
+    transition: transform 0.2s;
+}
+
+.texte {
+    margin: 0;
+    font-size: 29px;
+    font-weight: bold;
+    color: #f5f5f5;
+}
+
+.encadre:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.serveurs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.serveur {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    background-color: #383c41;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infos {
+    margin-left: 20px;
+    text-align: left;
+}
+
+.serveur h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.serveur p {
+    margin: 5px 0;
+}
+
+.serveur:hover {
+    transform: scale(1.07);
+}
+    </style>
+
+
+</head>
+
+<script>
+
+
+</script>
+
+<body>
+
+
+    <nav>
+        <div style="float:left">
+            <a href="index.html">
+                <img src="https://media.discordapp.net/attachments/1104338386837315614/1134881016893407342/e8d6b1f05ebfa76dcfd111f919f85a00-removebg.png?width=468&height=468" width="50" height="50">
+            </a>
+        </div>
+        <meta charset="utf8">
+        <a id="al" href="infos.html" class="category-link" data-category="category-1">Informations</a>
+        <a id="al" href="equipe.html" class="category-link" data-category="category-2">Notre équipe</a>
+        <a id="al" href="tos.html" class="category-link" data-category="category-3">Conditions d'utilisation</a>
+        <a id="al" href="privacy-policy.html" class="category-link" data-category="category-3">Politique de confidentialité</a>
+        <a id="al" href="contact.html" class="category-link" data-category="category-4">Assistance</a>
+    </nav>
+
+    <div class="main-content">
+        <div id="topzone">
+        </div>
+        <div id="category-1" class="category" style="color: #fff">
+            <meta charset="utf8">
+            <img src="https://media.discordapp.net/attachments/1104338386837315614/1134881016893407342/e8d6b1f05ebfa76dcfd111f919f85a00-removebg.png?width=468&height=468" alt="Xeliverse" width="200px">
+
+            <section class="wrapper">
+                <div class="top">Weyss</div>
+                <div class="bottom" aria-hidden="true">Weyss</div>
+            </section>
+            <h2><span id="votre"><strong>Votre</strong></span> Bot Discord</h2>
+            <p>Weyss est un Bot Discord multi-tâches de Modération, d'Utilitaire et d'Aventure. Celui-ci comprend une multitude de commandes utiles pour aider la gestion du serveur et de ses membres, améliorer l'activité et s'amuser !<br>Weyss propose un mode aventure complet et souvent mis à jour, afin de proposer une expérience de jeu stimulante immersive et complète directement depuis Discord. Weyss propose également des commandes encore jamais vues et rarement présentes sur les Bots actuels. Weyss et son équipe vous propose un service gratuit, 24h/24, complet et utile pour améliorer votre expérience Discord.
+              <br><br>  <strong>Qu'attendez-vous ? rejoignez l'aventure !</strong>
+                <br><br>
+            <a href="https://discord.com/oauth2/authorize?client_id=944904025520877588&scope=bot&permissions=1099511627775" class="button">
+                <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6cc3c481a15a141738_icon_clyde_white_RGB.png" alt="Dicord" class="logobutton">
+                Ajoute Weyss sur ton serveur</a>
+
+            </p>
+
+        </div>
+
+        <div id="suit" class="category" style="color: #fff">
+            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/9/98/Discord_logo.svg/2560px-Discord_logo.svg.png" width="350px">
+            <br>
+            <h1>Weyss, un Bot innovant et fleurissant</h1>
+            <p>Weyss est actif depuis le 20 Févrirer 2022 et développé par @Enyss (voir "notre équipe").</p>
+        </div>
+
+        <div id="botinfo" style="color: #fff">
+            <div class="encadre">
+                <p class="texte">Un Bot Discord 
+                    <span style="text-align: left"><br><strong>100%</strong> <span id="votre">Gratuit</span></span>
+                    <span style="text-align: left"><br><strong>100%</strong> <span id="votre">Fonctionnel</span></span>
+                    <span style="text-align: left"><br><strong>100%</strong> <span id="votre">Français</span></span>
+                    <br>
+                    <span style="font-size: 19px">Une expèrience hors du commun, nouvelle et grandissante.<br><br>
+                    </p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=944904025520877588&scope=bot&permissions=1099511627775" class="button">Ajoute Weyss sur ton serveur</a>
+               
+            </div>
+        <h1 style="color: #8b9cda;">Découvrez une expérience 100% gratuite, offrant une multitude de fonctions.</h1>
+        <br><br>
+        <h1 style="color: #b6c6ff;">Plus de 80 serveurs nous font confiance</h1>
+        <div class="serveurs">
+           
+            <div class="serveur">
+                <div class="logo">
+                    <img src="./leaflogo.png" alt="Logo Leaf">
+                </div>
+                <div class="infos">
+                    <h3>Leaf. | Discord Officiel</h3>
+                    <p style="color: #6882e0;">450+ Membres</p>
+                </div>
+            </div>
+    
+            <div class="serveur">
+                <div class="logo">
+                    <img src="./xeliverselogo.png" alt="Logo Xeliverse">
+                </div>
+                <div class="infos">
+                    <h3>Xeliverse</h3>
+                    <p style="color: #6882e0;">500+ Membres</p>
+                </div>
+            </div>
+               
+            <div class="serveur">
+                <div class="logo">
+                    <img src="./isolalogo.png" alt="Logo Isola">
+                </div>
+                <div class="infos">
+                    <h3>Isola</h3>
+                    <p style="color: #6882e0;">1800+ Membres</p>
+                </div>
+            </div>
+                
+        </div>
+        
+        <h1>Qu'attendez-vous pour faire comme eux ?</h1>
+        <br> <a href="https://discord.com/oauth2/authorize?client_id=944904025520877588&scope=bot&permissions=1099511627775" class="button">
+             Ajoute Weyss sur ton serveur</a>  
+        </div>
+       
+    </div>
+
+    <footer style="background-color: #272525; text-align: center; padding: 25px; color: #ffffff; align-items: center; text-align: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="https://media.discordapp.net/attachments/1104338386837315614/1134881016893407342/e8d6b1f05ebfa76dcfd111f919f85a00-removebg.png?width=468&height=468" alt="Weyss" width="150px">
+                </div>
+                <div class="col-md-6">
+                    <meta charset="utf8">
+                    <p style="color: #a1a1a1">&copy; 2023 WEYSS @enyss - Tout droits réservés.</p>
+                </div>
+                <div class="col-md-3">
+                    
+                            <ul class="list-unstyled">
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <br>
+                                <li><a href="tos.html">Terms of Use</a></li>
+                                <br>
+                                <li><a href="contact.html">Nous contacter</a></li>
+                            </ul>
+                        
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+
+</body>
+
+
+</html>
